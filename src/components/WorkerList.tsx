@@ -1,6 +1,6 @@
 "use client";
 
-import { UserCheck, UserX, UserMinus, Clock, ChevronDown, ChevronUp, User, DollarSign } from "lucide-react";
+import { UserCheck, UserX, UserMinus, Clock, ChevronDown, ChevronUp, User, IndianRupee } from "lucide-react";
 import { useStore, Attendance, AttendanceStatus } from "@/store/useStore";
 import { useMemo, useState } from "react";
 import { WorkerProfile } from "./WorkerProfile";
@@ -218,13 +218,9 @@ export function WorkerList({ compact = false, onWorkerClick }: WorkerListProps) 
                   </div>
                 </div>
                 {hasAdvances && (
-                  <button
-                    onClick={(e) => handleQuickAdvance(worker.id, e)}
-                    className="flex items-center gap-1 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full touch-manipulation"
-                  >
-                    <IndianRupee className="w-3 h-3" />
+                  <span className="flex items-center gap-1 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">
                     ₹{advances.toLocaleString()}
-                  </button>
+                  </span>
                 )}
               </div>
 

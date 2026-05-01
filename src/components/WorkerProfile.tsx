@@ -1,6 +1,6 @@
 "use client";
 
-import { X, DollarSign, Plus, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { X, Plus, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { useStore, Worker, FinancialTransaction } from "@/store/useStore";
 import { useState } from "react";
 
