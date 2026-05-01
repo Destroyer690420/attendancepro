@@ -179,7 +179,7 @@ export function WorkersPage() {
               <div className="font-medium text-gray-900">{worker.name}</div>
               <div className="text-xs text-gray-500">{worker.phone}</div>
               <div className="text-xs text-gray-500">
-                ${worker.dailyWageRate}/day • OT: ${worker.otRatePerHour}/hr
+                ₹{worker.dailyWageRate}/day • OT: ₹{worker.otRatePerHour}/hr
               </div>
             </div>
             <div className="flex gap-1">

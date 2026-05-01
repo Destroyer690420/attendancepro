@@ -213,7 +213,7 @@ export function WorkerList({ compact = false, onWorkerClick }: WorkerListProps) 
                   <div>
                     <div className="font-medium text-gray-900">{worker.name}</div>
                     <div className="text-xs text-gray-500">
-                      ${worker.dailyWageRate}/day • OT: ${worker.otRatePerHour}/hr
+                      ₹{worker.dailyWageRate}/day • OT: ₹{worker.otRatePerHour}/hr
                     </div>
                   </div>
                 </div>
@@ -222,8 +222,8 @@ export function WorkerList({ compact = false, onWorkerClick }: WorkerListProps) 
                     onClick={(e) => handleQuickAdvance(worker.id, e)}
                     className="flex items-center gap-1 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full touch-manipulation"
                   >
-                    <DollarSign className="w-3 h-3" />
-                    ${advances.toLocaleString()}
+                    <IndianRupee className="w-3 h-3" />
+                    ₹{advances.toLocaleString()}
                   </button>
                 )}
               </div>

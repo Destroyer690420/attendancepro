@@ -146,7 +146,7 @@ export function ReportsPage() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
             <div className="text-xs text-blue-600">Total Payout</div>
             <div className="text-xl font-bold text-blue-700">
-              ${totals.net.toLocaleString()}
+              ₹{totals.net.toLocaleString()}
             </div>
           </div>
         </div>
@@ -171,14 +171,14 @@ export function ReportsPage() {
               </div>
               <div className="text-right">
                 <div className="font-bold text-green-600">
-                  ${data.netPayable.toLocaleString()}
+                  ₹{data.netPayable.toLocaleString()}
                 </div>
                 <div className="text-xs text-gray-500">net</div>
               </div>
             </div>
             <div className="mt-2 pt-2 border-t border-gray-100 flex justify-between text-xs text-gray-500">
-              <span>${data.salary.toLocaleString()}</span>
-              <span className="text-red-600">-${data.advances.toLocaleString()}</span>
+              <span>₹{data.salary.toLocaleString()}</span>
+              <span className="text-red-600">-₹{data.advances.toLocaleString()}</span>
             </div>
           </div>
         ))}

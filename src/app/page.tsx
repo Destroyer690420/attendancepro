@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { BottomNav } from "@/components/BottomNav";
 import { AttendancePage } from "@/components/pages/AttendancePage";
 import { WorkersPage } from "@/components/pages/WorkersPage";
@@ -74,9 +75,12 @@ export default function Home() {
     <div className="flex flex-col h-screen-safe">
       <header className="bg-white border-b border-gray-200 px-4 py-3 flex-shrink-0">
         <div className="flex items-center justify-between">
-          <h1 className="text-lg font-semibold text-gray-900">
-            Daily Wage Manager
-          </h1>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt="Logo" width={24} height={24} className="rounded-md" />
+            <h1 className="text-lg font-semibold text-gray-900">
+              Daily Wage Manager
+            </h1>
+          </div>
           <div className="flex items-center gap-2">
             {isOffline && (
               <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">

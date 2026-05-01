@@ -92,11 +92,11 @@ export function WorkerProfile({ worker, onClose }: WorkerProfileProps) {
             </div>
             <div>
               <span className="text-gray-500">Daily Rate</span>
-              <div className="font-medium">${worker.dailyWageRate}</div>
+              <div className="font-medium">₹{worker.dailyWageRate}</div>
             </div>
             <div>
               <span className="text-gray-500">OT Rate/hr</span>
-              <div className="font-medium">${worker.otRatePerHour}</div>
+              <div className="font-medium">₹{worker.otRatePerHour}</div>
             </div>
             <div>
               <span className="text-gray-500">Joined</span>
@@ -121,7 +121,7 @@ export function WorkerProfile({ worker, onClose }: WorkerProfileProps) {
               <div className="text-xs text-green-600">OT hrs</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-green-800">${monthSalary.toLocaleString()}</div>
+              <div className="text-xl font-bold text-green-800">₹{monthSalary.toLocaleString()}</div>
               <div className="text-xs text-green-600">Salary</div>
             </div>
           </div>
@@ -140,22 +140,22 @@ export function WorkerProfile({ worker, onClose }: WorkerProfileProps) {
           <div className="grid grid-cols-3 gap-2 text-sm mb-3">
             <div>
               <div className="text-gray-500">Advances</div>
-              <div className="font-medium text-red-600">-${totalAdvances.toLocaleString()}</div>
+              <div className="font-medium text-red-600">-₹{totalAdvances.toLocaleString()}</div>
             </div>
             <div>
               <div className="text-gray-500">Bonuses</div>
-              <div className="font-medium text-green-600">+${totalBonuses.toLocaleString()}</div>
+              <div className="font-medium text-green-600">+₹{totalBonuses.toLocaleString()}</div>
             </div>
             <div>
               <div className="text-gray-500">Prev. Balance</div>
-              <div className="font-medium text-green-600">+${prevBalance.toLocaleString()}</div>
+              <div className="font-medium text-green-600">+₹{prevBalance.toLocaleString()}</div>
             </div>
           </div>
           <div className="border-t border-yellow-200 pt-2">
             <div className="flex justify-between">
               <span className="text-gray-500">Net Payable</span>
               <span className="font-bold text-green-700">
-                ${netPayable.toLocaleString()}
+                ₹{netPayable.toLocaleString()}
               </span>
             </div>
           </div>
@@ -259,7 +259,7 @@ export function WorkerProfile({ worker, onClose }: WorkerProfileProps) {
                         txn.type === "advance" ? "text-red-600" : "text-green-600"
                       }`}
                     >
-                      {txn.type === "advance" ? "-" : "+"}${txn.amount.toLocaleString()}
+                      {txn.type === "advance" ? "-" : "+"}₹{txn.amount.toLocaleString()}
                     </div>
                   </div>
                 ))}
