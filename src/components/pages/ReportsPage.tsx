@@ -1,8 +1,9 @@
 "use client";
 
-import { Calendar, Search, X } from "lucide-react";
+import { Calendar, Search, X, ChevronRight } from "lucide-react";
 import { useStore } from "@/store/useStore";
 import { useMemo, useState } from "react";
+import { WorkerAttendanceDetail } from "@/components/WorkerAttendanceDetail";
 
 export function ReportsPage() {
   const workers = useStore((state) => state.workers);
@@ -12,6 +13,7 @@ export function ReportsPage() {
     new Date().toISOString().slice(0, 7)
   );
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedWorkerId, setSelectedWorkerId] = useState<string | null>(null);
 
   const payrollData = useMemo(() => {
     const [year, month] = selectedMonth.split("-").map(Number);
@@ -96,6 +98,25 @@ export function ReportsPage() {
     );
   }, [payrollData]);
 
+  // Parse selectedMonth ("2026-04") into year/month for the detail view
+  const [reportYear, reportMonth] = selectedMonth.split("-").map(Number);
+
+  const selectedWorker = selectedWorkerId
+    ? workers.find((w) => w.id === selectedWorkerId)
+    : null;
+
+  if (selectedWorker) {
+    return (
+      <WorkerAttendanceDetail
+        worker={selectedWorker}
+        onBack={() => setSelectedWorkerId(null)}
+        initialYear={reportYear}
+        initialMonth={reportMonth - 1}
+        readOnly
+      />
+    );
+  }
+
   return (
     <div className="flex-1 overflow-auto pb-20">
       <div className="p-4 space-y-4">
@@ -154,9 +175,10 @@ export function ReportsPage() {
 
       <div className="px-4 pb-4 space-y-2">
         {filteredData.map((data) => (
-          <div
+          <button
             key={data.worker.id}
-            className="bg-white border border-gray-200 rounded-lg p-3"
+            onClick={() => setSelectedWorkerId(data.worker.id)}
+            className="w-full bg-white border border-gray-200 rounded-lg p-3 active:bg-gray-50 transition-colors touch-manipulation text-left"
           >
             <div className="flex justify-between items-start">
               <div>
@@ -169,18 +191,21 @@ export function ReportsPage() {
                   <span className="text-orange-600">{data.totalOtHours.toFixed(1)} OT</span>
                 </div>
               </div>
-              <div className="text-right">
-                <div className="font-bold text-green-600">
-                  ₹{data.netPayable.toLocaleString()}
+              <div className="flex items-center gap-2">
+                <div className="text-right">
+                  <div className="font-bold text-green-600">
+                    ₹{data.netPayable.toLocaleString()}
+                  </div>
+                  <div className="text-xs text-gray-500">net</div>
                 </div>
-                <div className="text-xs text-gray-500">net</div>
+                <ChevronRight className="w-4 h-4 text-gray-300 flex-shrink-0" />
               </div>
             </div>
             <div className="mt-2 pt-2 border-t border-gray-100 flex justify-between text-xs text-gray-500">
               <span>₹{data.salary.toLocaleString()}</span>
               <span className="text-red-600">-₹{data.advances.toLocaleString()}</span>
             </div>
-          </div>
+          </button>
         ))}
         {filteredData.length === 0 && (
           <div className="text-center text-gray-500 py-8">
